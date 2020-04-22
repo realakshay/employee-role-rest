@@ -17,6 +17,10 @@ jwt=JWT(app, authenticate, identity)
 def create_tables():
     db.create_all()
 
+@app.route('/')
+def index():
+    return "<h3>Application sterted..</h3>"
+
 api.add_resource(Employee, '/employee/<string:empid>')
 api.add_resource(Role, '/role/<string:name>')
 api.add_resource(UserRegister,'/user/<string:username>')

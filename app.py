@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
 from security import authenticate, identity
-from resources.employee import Employee
+from resources.employee import Employee, EmployeeList
 from resources.role import Role
 from resources.user import UserRegister
 
@@ -24,6 +24,7 @@ def index():
 api.add_resource(Employee, '/employee/<string:empid>')
 api.add_resource(Role, '/role/<string:name>')
 api.add_resource(UserRegister,'/user/<string:username>')
+api.add_resource(EmployeeList,'/employees')
 
 if __name__ == "__main__":
     from db import db

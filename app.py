@@ -19,7 +19,7 @@ def create_tables():
 
 @app.route('/')
 def index():
-    return "<h3>Application sterted..</h3>"
+    return "<h3>Application started..</h3>"
 
 api.add_resource(Employee, '/employee/<string:empid>')
 api.add_resource(Role, '/role/<string:name>')

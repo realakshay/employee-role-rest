@@ -26,6 +26,7 @@ class Role(Resource):
             role.insert_role()
             return {"message":"Designation inserted successfully"}, 201
 
+    @jwt_required()
     def delete(self, name):
         role=RoleModel.find_by_role_name(name)
         if role:

@@ -50,6 +50,7 @@ class Employee(Resource):
             employee.insert_in_db()
             return employee.json(), 201
 
+    @jwt_required()
     def delete(self, empid):
         employee=EmployeeModel.find_by_empid(empid)
         if employee:

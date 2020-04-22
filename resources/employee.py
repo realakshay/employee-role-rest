@@ -56,3 +56,8 @@ class Employee(Resource):
             employee.delete_from_db()
 
         return {"message":"Employee Deleted"},201
+
+class EmployeeList(Resource):
+
+    def get(self):
+        return {"Employees":[employee.json() for employee in EmployeeModel.query.all()]}

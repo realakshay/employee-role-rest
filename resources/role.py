@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 from models.role import RoleModel
+from flask_jwt import jwt_required
 
 class Role(Resource):
     parser=reqparse.RequestParser()
@@ -9,6 +10,7 @@ class Role(Resource):
         help="name should be there"
     )
 
+    @jwt_required()
     def get(self, name):
         role=RoleModel.find_by_role_name(name)
         if role:

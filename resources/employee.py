@@ -27,13 +27,13 @@ class Employee(Resource):
         if employee:
             return employee.json()
     
-        return {"message":"Record Not Found"}
+        return {"message":"Record Not Found"},404
 
     def post(self, empid):
         data=Employee.parser.parse_args()
         employee=EmployeeModel.find_by_empid(empid)
         if employee:
-            return {"message":"Record Already Exist"}
+            return {"message":"Record Already Exist"},201
         else:
             employee=EmployeeModel(empid, data['name'], data['role_id'])
             employee.insert_in_db()
@@ -43,7 +43,7 @@ class Employee(Resource):
         data=Employee.parser.parse_args()
         employee=EmployeeModel.find_by_empid(empid)
         if employee is None:
-            return {"message":"Record Not Found For This Record"}
+            return {"message":"Record Not Found For This Record"},404
         else:
             employee.name=data['name']
             employee.role_id=data['role_id']
@@ -55,4 +55,4 @@ class Employee(Resource):
         if employee:
             employee.delete_from_db()
 
-        return {"message":"Employee Deleted"}
+        return {"message":"Employee Deleted"},201

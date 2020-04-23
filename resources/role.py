@@ -33,3 +33,8 @@ class Role(Resource):
             role.delete_role()
             return {"message":"Designation deleted success"}, 201
         return {"message":"Designation not found"},404
+
+class RoleList(Resource):
+
+    def get(self):
+        return {"roles":[role.json() for role in RoleModel.query.all()]}

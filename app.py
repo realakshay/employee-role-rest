@@ -33,7 +33,6 @@ def get_feedback():
     return {'feedbacks':feedbacks[-3:]}
     
 
-
 api.add_resource(Employee, '/employee/<string:empid>')
 api.add_resource(Role, '/role/<string:name>')
 api.add_resource(UserRegister,'/user/<string:username>')
